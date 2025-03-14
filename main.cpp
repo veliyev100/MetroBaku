@@ -18,20 +18,28 @@ std::vector <std::string> Purpleline = {
         "Avtovogzal,"
         "Xochasan"
 };
-std::vector <std::string> Redline = {
-        "Bakmil",
-        "Nariman Narimanov",
-        "Ganjlik",
-        "28 May",
-        "Sahil",
-        "Icherisheher"
+std::vector<std::string> Redline = {
+    "Hazi Aslanov",
+    "Ahmadli",
+    "Xalqlar Dostlugu",
+    "Nefchiler",
+    "Qara Qarayev",
+    "Koroglu",
+    "Ulduz",
+    "Bakmil",
+    "Nariman Narimanov",
+    "Ganjlik",
+    "28 May",
+    "Sahil",
+    "Icherisheher"
 };
 
 void RedmetroTrain(int id) {
     std::this_thread::sleep_for(std::chrono::seconds(id * train_start_delay));
 
     for (int m = 0; m < max_round; m++) {
-        for (std::size_t i = 0; i < Redline.size(); i++) {
+        // First leg of the journey: Bakmil -> Icherisheher
+        for (std::size_t i = 7; i < Redline.size(); i++) {  // Start from Bakmil (index 7)
             {
                 std::lock_guard<std::mutex> lock(cout_mutex);
                 std::cout << "Metro " << id << " - Train arrived at: " << Redline[i] << std::endl;
@@ -47,20 +55,26 @@ void RedmetroTrain(int id) {
             }
         }
 
+        // Turning around at Icherisheher
         {
             std::lock_guard<std::mutex> lock(cout_mutex);
             std::cout << "Metro " << id << " - Train turning around at " << Redline.back() << std::endl;
         }
         std::this_thread::sleep_for(std::chrono::seconds(turnaround_time));
 
-        for (int i = static_cast<int>(Redline.size()) - 1; i >= 0; i--) {
+        // Second leg of the journey: Icherisheher -> Hazi Aslanov, skipping Bakmil
+        for (int i = static_cast<int>(Redline.size()) - 2; i >= 0; i--) {  // Start from Icherisheher and go backward
+            if (Redline[i] == "Bakmil") {
+                continue;  // Skip Bakmil on the return journey
+            }
+
             {
                 std::lock_guard<std::mutex> lock(cout_mutex);
                 std::cout << "Metro " << id << " - Train arrived at: " << Redline[i] << std::endl;
             }
             std::this_thread::sleep_for(std::chrono::seconds(stop_time));
 
-            if (i > 0) {
+            if (i > 0 && Redline[i - 1] != "Bakmil") {  // Skip Bakmil during departure
                 {
                     std::lock_guard<std::mutex> lock(cout_mutex);
                     std::cout << "Metro " << id << " - Train departing for " << Redline[i - 1] << "..." << std::endl;
@@ -69,6 +83,7 @@ void RedmetroTrain(int id) {
             }
         }
 
+        // Turning around at Hazi Aslanov (start of the line)
         {
             std::lock_guard<std::mutex> lock(cout_mutex);
             std::cout << "Metro " << id << " - Train turning around at " << Redline.front() << std::endl;
