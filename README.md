@@ -1,15 +1,22 @@
-MetroBaku — Симуляция Метро Баку
+# 🚇 MetroBaku — Симуляция Метро Баку
 
-MetroBaku — это многопоточная симуляция работы метрополитена в Баку. Поддерживаются 4 линии метро с отдельными потоками поездов.
-🔗 Репозиторий проекта
+**MetroBaku** — это многопоточная симуляция работы метрополитена в Баку.  
+Поддерживаются 4 линии метро с отдельными потоками поездов.
 
-GitHub: https://github.com/veliyev100/MetroBaku
-📥 Скачивание проекта
+---
 
-    Откройте терминал или командную строку.
+## 🔗 Репозиторий проекта
 
-    Клонируйте репозиторий с GitHub:
+**GitHub:** [https://github.com/veliyev100/MetroBaku](https://github.com/veliyev100/MetroBaku)
 
+---
+
+## 📥 Скачивание проекта
+
+1. Откройте терминал или командную строку.
+2. Клонируйте репозиторий с GitHub:
+
+```bash
 git clone https://github.com/veliyev100/MetroBaku.git
 
     Перейдите в папку проекта:
@@ -64,3 +71,4 @@ Purple metro train 1 is running.
 Light green metro train 2 is running.
 Red metro train 1 has finished its round.
 ...
+
