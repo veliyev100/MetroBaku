@@ -1,74 +1,66 @@
+MetroBaku — Симуляция Метро Баку
 
-# Metro Train Simulation
+MetroBaku — это многопоточная симуляция работы метрополитена в Баку. Поддерживаются 4 линии метро с отдельными потоками поездов.
+🔗 Репозиторий проекта
 
-### Описание
-Данный проект представляет собой многопоточное симулирование работы метрополитена в Баку. В симуляции задействованы 4 линии:
-- **Redline (Красная линия)**
-- **Greenline (Зеленая линия)**
-- **Purpleline (Фиолетовая линия)**
-- **Lightgreenline (Светло-зеленая линия)**
+GitHub: https://github.com/veliyev100/MetroBaku
+📥 Скачивание проекта
 
-Каждая линия имеет свой маршрут и отдельные потоки, которые эмулируют работу поездов. 
+    Откройте терминал или командную строку.
 
-### Файлы проекта
-- `main.cpp` — Основной файл, в котором создаются потоки для всех линий.
-- `MetroBaku.h` — Заголовочный файл с объявлениями глобальных переменных и функций.
-- `MetroBaku.cpp` — Реализация функций для эмуляции работы поездов.
+    Клонируйте репозиторий с GitHub:
 
----
+git clone https://github.com/veliyev100/MetroBaku.git
 
-## 📦 Сборка и запуск на Linux
-### Условия:
-- Установлен компилятор `g++`
-- Установлены библиотеки `pthread`
+    Перейдите в папку проекта:
 
-### Шаги:
-1. Скомпилируйте проект с помощью команды:
-```bash
- g++ -std=c++17 -pthread -o MetroSimulation main.cpp MetroBaku.cpp
-```
-2. Запустите программу:
-```bash
- ./MetroSimulation
-```
+cd MetroBaku
 
----
+⚙️ Сборка и запуск
+📦 На Linux
 
-## 📦 Сборка и запуск на Windows
-### Условия:
-- Установлен компилятор `g++` (например, из состава MinGW)
+Условия:
 
-### Шаги:
-1. Скомпилируйте проект с помощью команды:
-```bash
- g++ -std=c++17 -o MetroSimulation.exe main.cpp MetroBaku.cpp -lpthread
-```
-2. Запустите программу:
-```bash
- MetroSimulation.exe
-```
+    Установлен компилятор g++
 
----
+    Установлены библиотеки pthread
 
-## ⚙️ Настройка параметров
-Параметры симуляции можно изменить в файле `main.cpp`:
-- `travel_time` — Время движения между станциями (в секундах).
-- `stop_time` — Время остановки на станции (в секундах).
-- `turnaround_time` — Время разворота в депо (в секундах).
-- `train_start_delay` — Задержка между отправлением поездов (в секундах).
-- `max_round`, `max_round_1`, `max_round_2`, `max_round_3` — Количество кругов для поездов на каждой линии.
+Сборка:
 
----
+g++ -std=c++17 -pthread -o MetroSimulation main.cpp MetroBaku.cpp
 
-## 💡 Пример вывода
-```
+Запуск:
+
+./MetroSimulation
+
+🪟 На Windows
+
+Условия:
+
+    Установлен компилятор g++ (например, MinGW)
+
+Сборка:
+
+g++ -std=c++17 -o MetroSimulation.exe main.cpp MetroBaku.cpp -lpthread
+
+Запуск:
+
+MetroSimulation.exe
+
+⚙️ Настройки симуляции
+
+Параметры можно изменить в файле main.cpp:
+Параметр	Описание
+travel_time	Время движения между станциями (в секундах)
+stop_time	Время остановки на станции (в секундах)
+turnaround_time	Время разворота поезда в депо
+train_start_delay	Задержка между отправлением поездов
+max_round, max_round_1, ...	Количество кругов (рейсов) для каждой линии
+💡 Пример вывода
+
 Red metro train 1 is running.
 Green metro train 2 is running.
 Purple metro train 1 is running.
-Purple metro train 2 is running.
-Light green metro train 1 is running.
 Light green metro train 2 is running.
 Red metro train 1 has finished its round.
-Green metro train 2 has finished its round.
 ...
-```
